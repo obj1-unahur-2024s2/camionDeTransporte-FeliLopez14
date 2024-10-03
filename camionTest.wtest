@@ -1,9 +1,18 @@
+import cosas.*
 import camion.*
 
-describe "group of test for camion" {
+describe "Tests del archivo camion" {
 
-  test "first test" {
-    assert.that(true)
+  test "Si cargo al camion a bumblebee, 150kg de arena, la bateria antiaerea con misiles, 80 ladrillos embalados, el peso total de camion debe ser de 2410kg" {
+    camion.cargarUnaCosa(bumblebee)
+    arena.peso(150)
+    camion.cargarUnaCosa(arena)
+    camion.cargarUnaCosa(bateriaAntiaerea)
+    paqueteLadrillos.cantidad(80)
+    embalajeSeguridad.cosaEnvuelta(paqueteLadrillos)
+    camion.cargarUnaCosa(embalajeSeguridad)
+
+    assert.equals(2410, camion.peso())
   }
-
+  
 }

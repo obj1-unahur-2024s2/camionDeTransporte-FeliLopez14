@@ -1,9 +1,53 @@
 import cosas.*
 
-describe "group of test for cosas" {
+describe "Tests para el archivo cosas" {
 
-  test "first test" {
-    assert.that(true)
+  test "Si hay 20 ladrillos en el paquete, su peso sera de 40" {
+    paqueteLadrillos.cantidad(20)
+
+    assert.equals(40, paqueteLadrillos.peso())
   }
 
+  test "Si la bateria antiaerea no tiene misiles, su peso es de 200"{
+    bateriaAntiaerea.tieneMisiles(false)
+    
+    assert.equals(200, bateriaAntiaerea.peso())
+  }
+
+  test "Si la bateria antiaerea tiene misiles, su peligrosidad es de 100 puntos"{
+    bateriaAntiaerea.tieneMisiles(false)
+
+    bateriaAntiaerea.tieneMisiles(true)
+
+    assert.equals(100, bateriaAntiaerea.peligrosidad())
+  }
+
+  test "Si el contenedor portuario contiene a bumblebee, su peso sera de 900"{
+      contenedor.agregarCosa(bumblebee)
+
+      assert.equals(900, contenedor.peso())
+  }
+
+  test "Si el embalaje de embalaje de seguridad contiene a knightRider, su peligrosidad es de 5 puntos"{
+    embalajeSeguridad.cosaEnvuelta(knightRider)
+
+    assert.equals(5, embalajeSeguridad.peligrosidad())
+  }
+
+  test "Si el embalaje de seguridad tiene dentro a los residuos radioactivos con un peso de 30, su peso tambien sera de 30"{
+    embalajeSeguridad.cosaEnvuelta(residuosRadioactivos)
+    residuosRadioactivos.peso(30)
+
+    assert.equals(30, embalajeSeguridad.peso())
+  }
+
+  test "Si al contenedor le guardo a bumblebee, knightRider, y arena con un peso de 300, su peso sera de 1700"{
+    contenedor.agregarCosa(bumblebee)
+
+    contenedor.agregarCosa(knightRider)
+    arena.peso(300)
+    contenedor.agregarCosa(arena)
+
+    assert.equals(1700, contenedor.peso())
+  }
 }
