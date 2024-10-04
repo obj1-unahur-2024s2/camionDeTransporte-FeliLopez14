@@ -1,14 +1,15 @@
 object camion {
     const carga = []
+    const bultos = carga.sum({c => c.bultosOcupados()})
+
+    method bultos() = bultos
 
     method peso() = 1000 + carga.sum({c => c.peso()})
 
-    method cargarUnaCosa(cosa){
-        carga.add(cosa)
-    }
-    method descargarUnaCosa(cosa){
-        carga.remove(cosa)
-    }
+    method cargarUnaCosa(cosa) {cosa.sufrirCambios()     carga.add(cosa)}
+
+    method descargarUnaCosa(cosa) {carga.remove(cosa)}
+
     method pesosDeLaCarga() = carga.map({c => c.peso()})
 
     method todoPesoImpar() = self.pesosDeLaCarga().all({p => p.odd()})
